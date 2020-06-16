@@ -20,9 +20,9 @@ bit = int(input(et +'\n Enter bitrate : '+ ct))
 #Copying won't make u pro_grammer:
 
 dr = requests.get(link)
-with open('err.html', 'wb') as h:
+with open('err.txt', 'wb') as h:
 	h.write(dr.content)
-with open('err.html') as x:
+with open('err.txt') as x:
 	s = z(x, 'lxml')
 qq = s.find_all('div', id="header")[0]
 qp = qq.find('div', class_="hide song-json").next
