@@ -1,6 +1,4 @@
 
-https://github.com/dedshit/jio-saavu-downloader/blob/master/logo.png
-
 
 # *Jio-Saavn-Downloader*
 
