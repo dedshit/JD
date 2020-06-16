@@ -16,7 +16,7 @@ sys.stdout.flush()
 link = sys.stdin.readline()
 bit = int(input(et +'\n Enter bitrate : '+ ct))
  
-#F**off:
+#Fuk(off):
 #Copying won't make u Coder:
 
 dr = requests.get(link)
