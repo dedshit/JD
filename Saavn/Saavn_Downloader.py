@@ -90,12 +90,12 @@ def download():
        with open('song.mp3', 'wb') as pm:
         pm.write(sdd.content)
        print (et +'\n Downloaded !!! '+ ct)
-       trx = "$HOME/Saavn/*.txt" 
+       trx = "$HOME/jio-saavu-downloader/Saavn/*.txt" 
        os.system('rm -rf %s' % trx)
    except KeyboardInterrupt as zre:
        print (et +'\n Quittin!!! '+ ct)
   else:  
        print (et +'\n bye!! '+ ct)
-       xfq = "$HOME/Saavn/*.txt"
+       xfq = "$HOME/jio-saavu-downloader/Saavn/*.txt"
        os.system('rm -rf %s' % xfq)
 download()
