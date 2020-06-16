@@ -1,9 +1,9 @@
-# Jio-Saavu-Downloader
+# *Jio-Saavu-Downloader*
 Use this to Download Jio Saavn Songs without wastin goddamn money
 
 
 # _Features_:
 
- ¤> Download Songs without any limits
+ > Download Songs without any limits
  
- ¤> Download Albums
+ > Download Albums(workin on it)
