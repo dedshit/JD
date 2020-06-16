@@ -14,7 +14,7 @@ ct = '\033[0m'
 sys.stdout.write(et +'\n Enter link : '+ ct)
 sys.stdout.flush()
 link = sys.stdin.readline()
-bit = int(input(et +'\n Enter bitrate : '+ ct))
+bit = int(input(et +'\n Enter bitrate( default:256 ) : '+ ct))
  
 #Fuk(off):
 #Copying won't make u Coder:
