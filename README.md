@@ -1,4 +1,4 @@
-# *Jio-Saavu-Downloader*
+# *Jio-Saavn-Downloader*
 
 Simple program to Download Jio Saavn Songs without wastin goddamn money
 
