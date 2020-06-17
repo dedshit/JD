@@ -23,7 +23,7 @@ dr = requests.get(link)
 with open('err.txt', 'wb') as h:
 	h.write(dr.content)
 with open('err.txt') as x:
-	s = z(x, 'lxml')
+	s = z(x, 'html5lib')
 qq = s.find_all('div', id="header")[0]
 qp = qq.find('div', class_="hide song-json").next
 sk = bytes(qp.encode())
