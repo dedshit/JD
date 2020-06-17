@@ -8,7 +8,7 @@ Simple program to Download Jio Saavn Songs without wastin goddamn money
 
 # _Features_:
 
- > Download Songs without any limits
+ > Download Songs without any limits(no need to login)
  
  > Download Albums(workin on it)
 
