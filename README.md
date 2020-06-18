@@ -10,6 +10,8 @@ Simple program to Download Jio Saavn Songs without wastin goddamn money
 
  > Download Songs without any limits(no need to login)
  
+ > Supports upto high res audio (320k)
+ 
 
 # _Requirements_:
 
