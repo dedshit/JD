@@ -3,4 +3,4 @@ beautifulsoup4
 cython
 clang
 wheel
-lxml
+html5lib
