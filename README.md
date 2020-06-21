@@ -16,3 +16,10 @@ Simple program to Download Jio Saavn Songs without wastin goddamn money
 # _Requirements_:
 
  > libiconv, libxml2, libxslt
+
+# _Notice_:
+
+    * Due to security updates in Jio Saavn previous program died.
+        so, update the program immediately to avoid some shits!!!😀
+        
+    * Added html5lib instead lxml  
