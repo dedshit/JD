@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup as bx
 import random
 import sys
 
+#copy(fuk{off}):
 et = '\033[92m'
 ct = '\033[0m'
 
@@ -100,20 +101,19 @@ dx = input(et +'\n Do u want to download  Song {y/n}: '+ ct)
 def download():
   if dx == "y":
    try:
-       print (x7)
        print (et +'\n Downloading!!!!'+ ct)
        sdd = requests.get(z1)
        with open('Song.mp3', 'wb') as pm:
         pm.write(sdd.content)
        os.system('clear')
        print (et +'\n Downloaded !!! '+ ct)
-       trx = "$HOME/jio-saavu-downloader/Saavn/*.txt"
+       trx = "$HOME/jio-saavu-downloader/*.txt"
        os.system('rm -rf %s' % trx)
    except KeyboardInterrupt as zre:
        print (et +'\n Quittin!!! '+ ct)
   else:
        print (et +'\n Quiting!! '+ ct)
-       xfq = "$HOME/jio-saavu-downloader/Saavn/*.txt"
+       xfq = "$HOME/jio-saavu-downloader/*.txt"
        os.system('rm -rf %s' % xfq)
 download()
 
