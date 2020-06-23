@@ -15,7 +15,7 @@ Simple program to Download Jio Saavn Songs without wastin goddamn money
 
 # _Requirements_:
 
- > libiconv, libxml2, libxslt
+ > python
 
 # _Notice_:
 
