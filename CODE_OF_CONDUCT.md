@@ -9,6 +9,6 @@ This code of conduct outlines our expectations for all those who participate in,
 We invite all those who participate in Jio Saavu Downloader to help us create safe and positive experiences for everyone.
 
 
-## 3. Contact info
+## 2. Contact info
 
 wa.me/+918428425154
