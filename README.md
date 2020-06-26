@@ -23,3 +23,4 @@ Simple program to Download Jio Saavn Songs without wastin goddamn money
         so, update the program immediately to avoid some shits!!!😀
         
     * Added html5lib instead lxml  
+    * Even now saavn didn't care about drm protection  fuck🤣🤣
