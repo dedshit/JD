@@ -1,125 +1,66 @@
 #!/usr/bin/python3
-
-import json
 import requests
-import random
-from bs4 import BeautifulSoup as z5
-
-et = "\033[92m"
-ct = "\033[0m"
-
-lcn = input(et+'\n Enter link of song : '+ct)
-qua = (et+"""
-
-	Available Qualities
-	[1] 96 => low
-	[2] 128 => medium
-	[3] 168 => high
-	[4] 320 => ultra
-"""+ct)
-
-print (qua)
-aud = int(input(et+'\n Enter audio resoultion code : '+ct))
-
-grl = requests.get(lcn)
-gfl = (grl.content)
-tsu = (gfl.decode('utf-8'))
-z0f = (z5(tsu, 'html5lib'))
-ad0 = (z0f.find_all('script')[42])
-foh = ad0.prettify()
-
-
-for i in foh.split(','):
-	if 'pid' in i:
-		cv = (i)[9:]
-
-pi = json.loads(cv)
-p8 = (pi['pid'])
-
-url = "https://www.jiosaavn.com/api.php"
-
-aex = [
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
-	'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
-	'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36',
-	'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0',
-	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/',
-	'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko/20100101 Firefox/64.0',
-	'Mozilla/5.0 (X11; CrOS x86_64 11895.118.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.159 Safari/537.36',
-	'Mozilla/5.0 (Linux; U; Android 2.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
-	'Mozilla/5.0 (Linux; Android 6.0; CAM-L21 Build/HUAWEICAM-L21; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36',
-	'Mozilla/5.0 (Linux; U; Android 4.2.2; de-de; Lenovo A7600-F Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30',
-	'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)'
-]
-
-for i in range(1, 10):
-   user = random.choice(aex)
-
-headers = {
-	"Accept":"application/json, text/plain, */*",
-	"Accept-Encoding":"gzip, deflate, br",
-	"Accept-Language":"en-US,en;q=0.5",
-	"Connection":"keep-alive",
-	"Host":"www.jiosaavn.com",
-	"Referer":"https://www.jiosaavn.com/",
-	"TE":"Trailers",
-	"User-Agent":user
-}
-
-p = {
-	"__call":"song.getDetails",
-	"pids":p8,
-	"api_version":"4",
-	"_format":"json",
-	"ctx":"web6dot0",
-	"_marker":"0"
-}
-
-r = requests.get(url, headers=headers, params=p)
-rr = (r.content)
-r49 = (rr.decode('utf-8'))
-w42 = json.loads(r49)
-e58 = (w42['songs'][0])
-e54 = (e58['title'])
-e67 = (e58['subtitle'])
-e85 = (e58['more_info'])
-r73 = (e85['encrypted_media_url'])
-
-print (et+'\n Song : '+ct, e54)
-print (et+'\n sub : '+ct, e67)
-
-po7 = {
-	"__call":"song.generateAuthToken",
-	"url":r73,
-	"bitrate":aud,
-	"_format":"json",
-	"api_version":"4",
-	"_marker":"0",
-	"ctx":"web6dot0"
-}
-
-rqw = requests.get(url, headers=headers, params=po7)
-r3t = (rqw.content)
-dp = (r3t.decode('utf-8'))
-pd = json.loads(dp)
-s3 = (pd['auth_url'])
-
-dx = input('\n do u want to download (y/n) ')
-
-def download():
-  if dx == "y":
-   try:
-       print (et +'\n Downloading!!!!'+ ct)
-       sdd = requests.get(s3)
-       with open('Song.mp3', 'wb') as pm: 
-        pm.write(sdd.content)
-       def clear():
-         print("\x1B[2J")
-       clear()
-       print (et +'\n Downloaded !!! '+ ct)
-   except KeyboardInterrupt as zre:
-       print (et +'\n Abort!!! '+ ct)  
-  else:
-       print (et +'\n Quiting!! '+ ct)
-
-download()
+import sys
+import argparse
+import bs4
+import headers
+def arg():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-a", "--A", help="Enter audio ", action="store_true")
+    parser.add_argument("-q", action="store_true")
+    args, unknown = parser.parse_known_args()
+def sig():
+    try:
+        if sys.argv[1] == '-a' or '--A':
+            req = requests.get(sys.argv[2])
+            req_parse = bs4.BeautifulSoup(req.content.decode(), "html5lib")
+            content = req_parse.find_all("script")[40].prettify()
+            pi = []
+            for _ in content.split(','):
+                if "pid" in _:
+                    pi.append(_)
+            pid = eval((pi[0])[9:])['pid']
+            return pid   
+        else:
+            pass
+    except IndexError:
+        pass
+def song():
+    data = {
+        "__call":"song.getDetails",
+        "pids":sig(),
+        "api_version":"4",
+        "_format":"json",
+        "ctx":"web6dot0",
+        "_marker":"0"
+    }
+    req = requests.get("https://www.jiosaavn.com/api.php", headers=headers.headers, params=data)
+    pr = (req.json())
+    try:
+        if sys.argv[3]:
+            pix = int(sys.argv[4])
+            x1 = pr["songs"][0]["title"]
+            print("SONG : ", x1)
+            enc_url = pr["songs"][0]["more_info"]["encrypted_media_url"]
+            data = {
+                "__call":"song.generateAuthToken",
+                "url":enc_url,
+                "bitrate":pix,
+                "_format":"json",
+                "api_version":"4",
+                "_marker":"0",
+                "ctx":"web6dot0"
+            }
+            song_req = requests.post("https://www.jiosaavn.com/api.php", headers=headers.headers, data=data)
+            tokn_url = (song_req.json()["auth_url"])
+            dl = requests.get(tokn_url)
+            with open('{}.mp3'.format(x1), "wb") as jn:
+                jn.write(dl.content)
+        else:
+            pass            
+    except IndexError:
+        print("python3 saavn.py { -a/--A <song> -q <pixel> <-}")
+    except KeyboardInterrupt:
+        print("Abort")
+if __name__ == "__main__":
+    song()
