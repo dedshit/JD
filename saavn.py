@@ -6,11 +6,12 @@ import bs4
 import headers
 def arg():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-a", "--A", help="Enter audio ", action="store_true")
-    parser.add_argument("-q", action="store_true")
+    parser.add_argument("-a", "--A", help=" To download song ", action="store_true")
+    parser.add_argument("-q", help=" available quality (96,144,240,320)  ",  action="store_true")
     args, unknown = parser.parse_known_args()
 def sig():
     try:
+        arg()
         if sys.argv[1] == '-a' or '--A':
             req = requests.get(sys.argv[2])
             req_parse = bs4.BeautifulSoup(req.content.decode(), "html5lib")
@@ -37,6 +38,7 @@ def song():
     req = requests.get("https://www.jiosaavn.com/api.php", headers=headers.headers, params=data)
     pr = (req.json())
     try:
+        arg()
         if sys.argv[3]:
             pix = int(sys.argv[4])
             x1 = pr["songs"][0]["title"]
@@ -59,7 +61,7 @@ def song():
         else:
             pass            
     except IndexError:
-        print("python3 saavn.py { -a/--A <song> -q <pixel> <-}")
+        print("python3 saavn.py --h")
     except KeyboardInterrupt:
         print("Abort")
 if __name__ == "__main__":
