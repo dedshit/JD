@@ -17,9 +17,10 @@ Simple program to Download Jio Saavn Songs without wastin goddamn money
 
  > python
 
-# _Notice_:
+# _Whatsnew_:
+   
+      * Cli support
+      
+# _Usage_:
 
-    * Due to security updates in Jio Saavn previous program died.
-        so, update the program immediately to avoid some shits!!!😀
-        
-    * Added html5lib instead lxml
+      python3 saavn.py -a link -q quality
